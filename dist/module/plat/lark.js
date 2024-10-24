@@ -138,7 +138,14 @@ export default class Lark extends Notify {
                     {
                         tag: 'div',
                         text: {
-                            content: `**Message**，\n ${inputs.notifyMessage || ctxFormatContent.commitsContent}`,
+                            content: `**Commits**: \n${ctxFormatContent.commitsContent}`,
+                            tag: 'lark_md',
+                        },
+                    },
+                    {
+                        tag: 'div',
+                        text: {
+                            content: `**Message**: \n${inputs.notifyMessage}`,
                             tag: 'lark_md',
                         },
                     },
@@ -237,7 +244,14 @@ export default class Lark extends Notify {
                     {
                         tag: 'div',
                         text: {
-                            content: `**Message**，\n ${inputs.notifyMessage || ctxFormatContent.commitsContent}`,
+                            content: `**Commits**: \n${ctxFormatContent.commitsContent}`,
+                            tag: 'lark_md',
+                        },
+                    },
+                    {
+                        tag: 'div',
+                        text: {
+                            content: `**Message**: \n${inputs.notifyMessage}`,
                             tag: 'lark_md',
                         },
                     },
