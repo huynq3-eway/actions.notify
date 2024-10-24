@@ -1,0 +1,32 @@
+name: 'lark notify'
+description: 'send message to lark client'
+branding:
+  icon: send
+  color: orange
+inputs:
+  plat_type:
+    description: 'Which social platform to notify'
+    required: true
+    default: 'Lark'
+  notify_title:
+    description: 'It will be used as the head title of the notification.'
+    required: false
+    default: 'Project Updated'
+  notify_message:
+    description: 'It will be used as the content of the notification.'
+    required: false
+    default: ''
+  template_color:
+    description: 'It will be used as the template color of the notification.'
+    required: false
+    default: 'red'
+  enable_image:
+    description: 'support to upload image and use it to notify'
+    required: false
+    default: enable=true url='' title=''
+outputs:
+  msg: # id of output
+    description: 'The msg and code we sended to you'
+runs:
+  using: node20
+  main: dist/index.js
