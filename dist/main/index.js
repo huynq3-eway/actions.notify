@@ -38,6 +38,7 @@ async function run() {
         const type = core.getInput('plat_type');
         const notifyTitle = core.getInput('notify_title') || 'Project Update';
         const notifyMessage = core.getInput('notify_message');
+        const templateColor = core.getInput('template_color') || 'red';
         const { NOTIFY_WEBHOOK, NOTIFY_SIGNKEY, GITHUB_WORKSPACE: sourceDir = '', JOB_FAILURE_STATUS, } = process.env;
         if (!type || !NOTIFY_WEBHOOK) {
             core.setFailed('required args is missing, please check your plat_type or NOTIFY_WEBHOOK setting');
@@ -46,6 +47,7 @@ async function run() {
         const notify = new plat_1.default[type](NOTIFY_WEBHOOK, github.context, {
             notifyTitle,
             notifyMessage,
+            templateColor,
             signKey: NOTIFY_SIGNKEY,
         });
         let msg;
