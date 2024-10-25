@@ -13,12 +13,12 @@ import axios from 'axios'
 import Plat from './plat'
 
 async function run() {
-  core.info('This is an informational message.');
+  core.info('Run Notify action')
   try {
     const type = core.getInput('plat_type')
     const notifyTitle = core.getInput('notify_title') || 'Project Update'
     const notifyMessage = core.getInput('notify_message')
-    const templateColor = core.getInput('template_color') || 'red'
+    const templateColor = core.getInput('template_color') || 'green'
     const {
       NOTIFY_WEBHOOK,
       NOTIFY_SIGNKEY,
@@ -66,7 +66,7 @@ async function run() {
           }
         )
       } catch (error) {
-        core.info('This is an informational message.');
+        core.info('Error when execute notify.')
         core.setFailed(error as Error)
       }
     } else {
@@ -83,7 +83,7 @@ async function run() {
 
     core.setOutput('msg', `${new Date() + ': ' + msg}`)
   } catch (error) {
-    core.info('This is an informational message.');
+    core.info('Error when run.')
     core.setFailed(error as Error)
   }
 }
