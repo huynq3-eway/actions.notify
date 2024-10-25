@@ -68,6 +68,7 @@ async function run() {
       } catch (error) {
         core.info('Error when execute notify.')
         core.setFailed(error as Error)
+        core.setOutput('error_message', (error as Error).message);
       }
     } else {
       let res: any = {}
@@ -85,6 +86,7 @@ async function run() {
   } catch (error) {
     core.info('Error when run.')
     core.setFailed(error as Error)
+    core.setOutput('error_message', (error as Error).message);
   }
 }
 
