@@ -1,0 +1,29 @@
+name: Test custom action
+
+on:
+  push:
+    branches:
+      - master
+      - dev
+      - develop
+
+jobs:
+  test-custom-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Notify
+        uses: ./
+        with:
+          plat_type: 'Lark'
+          notify_title: 'Docker build success'
+          notify_message: 'This is a test'
+          template_color: 'green'
+        env:
+          NOTIFY_WEBHOOK: ${{ secrets.LARK_BOT_NOTIFY_WEBHOOK }}

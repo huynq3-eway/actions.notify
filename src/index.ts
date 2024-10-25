@@ -13,6 +13,7 @@ import axios from 'axios'
 import Plat from './plat'
 
 async function run() {
+  core.info('This is an informational message.');
   try {
     const type = core.getInput('plat_type')
     const notifyTitle = core.getInput('notify_title') || 'Project Update'
@@ -65,6 +66,7 @@ async function run() {
           }
         )
       } catch (error) {
+        core.info('This is an informational message.');
         core.setFailed(error as Error)
       }
     } else {
@@ -81,6 +83,7 @@ async function run() {
 
     core.setOutput('msg', `${new Date() + ': ' + msg}`)
   } catch (error) {
+    core.info('This is an informational message.');
     core.setFailed(error as Error)
   }
 }
