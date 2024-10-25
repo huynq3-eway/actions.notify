@@ -1,0 +1,29 @@
+name: Test failed workflow
+
+on:
+  push:
+    branches:
+      - master
+      - dev
+      - develop
+
+jobs:
+  test-failed-workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - id: build-step
+        name: Build some things
+        run: exit 1
+
+      - name: Notify on build success
+        run: echo Build success
+      - name: Notify on build failed
+        if: ${{ failure() && steps.build-step.outcome == 'failure' }}
+        run: echo "Build failed, build-step's outcome is ${{steps.build-step.outcome}}"
+
+      - name: Notify on job fails
+        if: ${{ failure() && steps.build-step.outcome == 'skipped' }}
+        run: echo "Job failed before build, build-step's outcome is ${{steps.build-step.outcome}}"
